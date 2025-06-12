@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Filament\Facades\Filament;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Filament::serving(function () {
+            if (!auth()->check()) return;
+
+            if (request()->is('admin/login')) {
+                return;
+            }
+
+            if (auth()->user()->role !== 'admin') {
+                // Tambahkan pesan alert
+                session()->flash('error', 'Akses ditolak! Hanya admin yang dapat masuk.');
+
+                auth()->logout();
+                session()->invalidate();
+                session()->regenerateToken();
+
+                redirect()->route('login')->send();
+            }
+        });
     }
 }

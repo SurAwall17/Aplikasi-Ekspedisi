@@ -67,7 +67,10 @@
             <li><a href="/#about">About</a></li>
             <li><a href="/#contact">Contact</a></li>
             <li><a href="/#faq">FAQ</a></li>
-            <li class="dropdown"><a href="#"><img width="20px" src="{{ asset('assets/img/profile.jpg') }}"> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <li class="dropdown"><a href="#"><img width="25px"
+              src="{{ Auth::user()->foto ? asset('storage/foto/' . Auth::user()->foto) : Avatar::create(Auth::user()->name)->toBase64() }}"
+              alt="User Avatar"
+              class="rounded-full"> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li>
                   <form action="/logout" method="POST">

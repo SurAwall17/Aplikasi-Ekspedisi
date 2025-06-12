@@ -7,6 +7,7 @@ use App\Models\User;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Laravolt\Avatar\Facade as Avatar;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
@@ -51,17 +52,43 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('foto')
+                    ->label('Foto')
+                    ->circular()
+                    ->height(40)
+                    ->width(40)
+                    ->getStateUsing(function ($record) {
+                        if (!empty($record->foto)) {
+                            return asset('storage/foto/' . $record->foto);
+                        }
+                        return Avatar::create($record->name)->toBase64();
+                    }),
                 TextColumn::make('name'),
                 TextColumn::make('email'),
                 TextColumn::make('role'),
-                TextColumn::make('alamat'),
-                TextColumn::make('no_telepon'),
+                TextColumn::make('alamat')
+                    ->alignCenter()
+                    ->getStateUsing(function ($record){
+                        if(empty($record->alamat)){
+                            return "-";
+                        }
+                        return $record->alamat;
+                    }),
+                TextColumn::make('no_telepon')
+                    ->alignCenter()
+                    ->getStateUsing(function ($record){
+                        if(empty($record->no_telepon)){
+                            return "-";
+                        }
+                        return $record->no_telepon;
+                    }),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
