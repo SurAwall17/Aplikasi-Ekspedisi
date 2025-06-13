@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -46,6 +47,5 @@ Route::get('/notifikasi', function () {
     ]);
 });
 
-Route::get('/portfolio-details', function () {
-    return view('portfolio-details');
-});
+Route::get('/profile/{id}', [ProfileController::class, 'profile']);
+Route::put('/profile/update', [ProfileController::class, 'updateProfile']);

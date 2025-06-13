@@ -73,7 +73,12 @@
               class="rounded-full"> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li>
-                  <form action="/logout" method="POST">
+                  <a href="/profile/{{ Auth()->user()->id }}" class="{{ ($title == "profile")? "text-danger" : "" }} d-inline-block w-100 p-1 fs-6">
+                    <i class="bi bi-person fs-6 my-profile"></i> My Profile
+                  </a>
+                </li>
+                <li>
+                  <form action="/logout" method="POST" class="p-1">
                     @csrf
                     <button class="logout" type="submit"><i class="bi bi-box-arrow-right"></i> Logout</button>
                   </form>

@@ -409,10 +409,28 @@ h6 {
     background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
   }
 
+  .navmenu a i.my-profile,
+  .navmenu a:focus i.my-profile{
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    width: 15px;
+    height: 10px;
+    display: inline-block;
+    border-radius: none;
+    transition: 0.3s;
+    background-color: white;
+  }
+
   .navmenu a i:hover,
   .navmenu a:focus i:hover {
     background-color: var(--accent-color);
     color: var(--contrast-color);
+  }
+  .navmenu a i.my-profile:hover,
+  .navmenu a:focus i.my-profile:hover {
+    background-color: white;
+    color: black;
   }
 
   .navmenu a:hover,

@@ -37,7 +37,6 @@ class PengirimanResource extends Resource
         return static::getModel()::count();
     }
     
-
     protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
