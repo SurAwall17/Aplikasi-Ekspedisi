@@ -36,8 +36,8 @@
 
   <!-- Tabel Daftar Pengiriman -->
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <thead class="table table-hover">
+    <table id="myTable" class="display">
+      <thead>
         <tr>
           <th>ID</th>
           <th>Customer</th>
@@ -47,7 +47,6 @@
           <th>No HP</th>
           <th>Nama Barang</th>
           <th>Berat</th>
-          <th>Ukuran</th>
           <th>Volume</th>
           <th>Type</th>
           <th>Harga</th>
@@ -57,41 +56,26 @@
         </tr>
       </thead>
       <tbody>
-        {{-- Contoh data dummy, ganti dengan data dari controller --}}
-        <tr>
-          <td>1</td>
-          <td>PT ABC</td>
-          <td>Truk 01</td>
-          <td>Gudang A</td>
-          <td>Budi</td>
-          <td>08123456789</td>
-          <td>Elektronik</td>
-          <td>20 kg</td>
-          <td>50x30x40 cm</td>
-          <td>0.06 m³</td>
-          <td>Express</td>
-          <td>Rp 150.000</td>
-          <td>2025-05-30</td>
-          <td>Dalam Perjalanan</td>
-         
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>PT ABC</td>
-          <td>Truk 01</td>
-          <td>Gudang A</td>
-          <td>Budi</td>
-          <td>08123456789</td>
-          <td>Elektronik</td>
-          <td>20 kg</td>
-          <td>50x30x40 cm</td>
-          <td>0.06 m³</td>
-          <td>Express</td>
-          <td>Rp 150.000</td>
-          <td>2025-05-30</td>
-          <td>Dalam Perjalanan</td>
-          
-        </tr>
+        
+        @foreach ($data as $item)
+          <tr>
+            <td>{{ $item->id }}</td>
+            <td>{{ $item->user->name }}</td>
+            <td>{{ $item->truk->nama_truk }}</td>
+            <td>{{ $item->gudang->kode_tempat }}</td>
+            <td>{{ $item->penerima }}</td>
+            <td>{{ $item->nohp_penerima }}</td>
+            <td>{{ $item->nama_barang }}</td>
+            <td>{{ $item->berat . " kg" }}</td>
+            <td>{!! $item->volume . " m<sup>3</sup>" !!}</td>
+            <td>{{ $item->type }}</td>
+            <td>{{ $item->harga }}</td>
+            <td>{{ $item->tgl_pengiriman }}</td>
+            <td>{{ $item->status_pengiriman }}</td>
+            
+            
+          </tr>
+        @endforeach
         {{-- @foreach ($pengiriman as $item)
           <tr>
             <td>{{ $item->id }}</td>
@@ -111,3 +95,7 @@
 
   </main>
 @include('partials.footer')
+<script>
+let table = new DataTable('#myTable');
+
+</script>
