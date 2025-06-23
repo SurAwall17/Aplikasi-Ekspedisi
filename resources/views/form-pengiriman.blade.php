@@ -32,7 +32,7 @@
           <div class="row g-3">
 
             <!-- Costumer -->
-            <div class="col-md-4">
+            <div class="col-md-6">
               <label for="customer" class="form-label">Nama Pengirim</label>
               <input type="text" hidden name="user_id" readonly value="{{ Auth()->user()->id }}" class="form-control" id="namaPengirim" placeholder="Masukkan nama pengirim">
 
@@ -41,7 +41,7 @@
             </div>
 
             <!-- Truk -->
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
               <label for="truck" class="form-label">Truk</label>
               <select id="truck" name="truk_id" class="form-select">
                 <option selected>Pilih Truk</option>
@@ -49,10 +49,10 @@
                   <option value="{{ $item->id }}">{{ $item->nama_truk }}</option>
                 @endforeach
               </select>
-            </div>
+            </div> --}}
 
             <!-- Gudang -->
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
               <label for="warehouse" class="form-label">Gudang</label>
               <select id="warehouse" name="gudang_id" class="form-select">
                 <option selected>Pilih Gudang</option>
@@ -60,7 +60,7 @@
                   <option value="{{ $item->id }}">{{ $item->kode_tempat }}</option>
                 @endforeach
               </select>
-            </div>
+            </div> --}}
 
             <!-- Nama Penerima -->
             <div class="col-md-6">
@@ -127,8 +127,10 @@
               <input type="date" name="tgl_pengiriman" class="form-control" id="tglPengiriman">
             </div>
 
-            <!-- Status Pengiriman -->
-            <div class="col-md-6">
+            
+            <input type="text" name="status_pengiriman" value="Sedang Diproses" class="form-control" id="status_pengiriman" hidden>
+            
+            {{-- <div class="col-md-6">
               <label for="statusPengiriman" class="form-label">Status Pengiriman</label>
               <select id="statusPengiriman" name="status_pengiriman" class="form-select">
                 <option selected>Pilih Status</option>
@@ -136,7 +138,7 @@
                 <option value="Dalam Perjalanan">Dalam Perjalanan</option>
                 <option value="Terkirim">Terkirim</option>
               </select>
-            </div>
+            </div> --}}
 
             <!-- Submit Button -->
             <div class="col-12">

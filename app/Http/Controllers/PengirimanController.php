@@ -6,17 +6,20 @@ use App\Models\Truk;
 use App\Models\User;
 use App\Models\Gudang;
 use App\Models\Pengiriman;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class PengirimanController extends Controller
 {
     public function dataPengiriman(){
+        $i = 1;
         $id = Auth()->user()->id;
         $data = Pengiriman::with(['user', 'truk', 'gudang'])
                 ->where('user_id', $id)
                 ->get();
 
         return view('pengiriman', [
+            'i' => $i,
             'title' => 'pengiriman',
             'data' => $data
         ]);
@@ -36,9 +39,10 @@ class PengirimanController extends Controller
 
     public function tambahPengiriman(Request $request){
         $request->validate([
+            // 'resi' => 'required',
             'user_id' => 'required',
-            'truk_id' => 'required',
-            'gudang_id' => 'required',
+            // 'truk_id' => 'required',
+            // 'gudang_id' => 'required',
             'penerima' => 'required|max:255',
             'nohp_penerima' => 'required|max:13',
             'nama_barang' => 'required|max:255',
@@ -51,9 +55,10 @@ class PengirimanController extends Controller
         ]);
 
         Pengiriman::create([
+            'resi' => "EXP" . Str::upper(Str::random(10)),
             'user_id' => $request->user_id,
-            'truk_id' => $request->truk_id,
-            'gudang_id' => $request->gudang_id,
+            // 'truk_id' => $request->truk_id,
+            // 'gudang_id' => $request->gudang_id,
             'penerima' => $request->penerima,
             'nohp_penerima' => $request->nohp_penerima,
             'nama_barang' => $request->nama_barang,

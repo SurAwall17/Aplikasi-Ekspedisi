@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PengirimanController;
 
 /*
@@ -30,12 +31,8 @@ Route::get('/', function () {
     ]);
 })->middleware('auth');
 
-Route::get('/notifikasi', function () {
-    return view('notifikasi',[
-        'title' => 'notifikasi'
-    ]);
-});
 
+Route::get('/notifikasi', [NotifikasiController::class, 'notifikasi']);
 Route::get('/pengiriman', [PengirimanController::class, 'dataPengiriman']);
 Route::get('/form-pengiriman', [PengirimanController::class, 'formPengiriman']);
 Route::post('/tambah-pengiriman', [PengirimanController::class, 'tambahPengiriman']);

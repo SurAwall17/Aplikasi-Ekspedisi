@@ -170,6 +170,7 @@ class PengirimanResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('resi')->label('Resi'),
                 TextColumn::make('user.name')->label('Pengirim'),
                 TextColumn::make('nama_barang'),
                 TextColumn::make('berat')->formatStateUsing(fn ($state) => $state. ' kg'),
@@ -177,6 +178,7 @@ class PengirimanResource extends Resource
                 TextColumn::make('penerima'),
                 TextColumn::make('harga')->formatStateUsing(fn ($state) => 'Rp ' . number_format($state, 0, ',', '.')),
                 TextColumn::make('nohp_penerima')->label('Nohp Penerima'),
+                TextColumn::make('truk.nama_truk'),
                 TextColumn::make('gudang.alamat'),
                 TextColumn::make('status_pengiriman')->label('Status Pengiriman')
                     ->badge()
@@ -203,21 +205,47 @@ class PengirimanResource extends Resource
                 ->visible(fn ($record) => $record->status_pengiriman === 'Sedang Diproses')
                 ->requiresConfirmation()
                 ->modalHeading('Konfirmasi Pengiriman')
-                ->modalSubheading('Apakah Anda yakin paket dalam perjalanan?')
-                ->modalButton('Ya')
-                ->action(function ($record) {
-                    $record->update(['status_pengiriman' => 'Dalam Perjalanan']);
+                ->modalSubheading('Silakan pilih gudang dan truk untuk pengiriman ini.')
+                ->modalButton('Kirim Sekarang')
+                ->form(function ($record) {
+                    // Jika gudang_id dan truk_id sudah ada, tidak perlu tampilkan form
+                    if ($record->gudang_id && $record->truk_id) {
+                        return []; // Tidak tampilkan form
+                    }
+
+                    return [
+                        Forms\Components\Select::make('gudang_id')
+                            ->label('Gudang Tujuan')
+                            ->options(\App\Models\Gudang::all()->pluck('kode_tempat', 'id'))
+                            ->searchable()
+                            ->required(),
+
+                        Forms\Components\Select::make('truk_id')
+                            ->label('Truk Pengirim')
+                            ->options(\App\Models\Truk::all()->pluck('nama_truk', 'id'))
+                            ->searchable()
+                            ->required(),
+                    ];
+                })
+                ->action(function ($record, array $data) {
+                    $record->update([
+                        'status_pengiriman' => 'Dalam Perjalanan',
+                        'gudang_id' => $record->gudang_id ?? $data['gudang_id'] ?? null,
+                        'truk_id' => $record->truk_id ?? $data['truk_id'] ?? null,
+                    ]);
                 }),
 
-                Tables\Actions\Action::make('sampai')
-                ->label('Sampai')
-                ->icon('heroicon-o-check-circle')
-                ->color('success')
+
+
+                Tables\Actions\Action::make('konfirmasiSampai')
+                ->label('Tandai Sudah Sampai')
+                ->icon('heroicon-o-question-mark-circle')
+                ->color('warning')
                 ->visible(fn ($record) => $record->status_pengiriman === 'Dalam Perjalanan')
                 ->requiresConfirmation()
                 ->modalHeading('Konfirmasi Pengiriman')
-                ->modalSubheading('Apakah Anda yakin paket telah sampai di tujuan?')
-                ->modalButton('Ya, Sudah Sampai')
+                ->modalSubheading('Apakah Anda yakin bahwa barang telah sampai di tujuan?')
+                ->modalButton('Ya, Barang Sudah Sampai')
                 ->action(function ($record) {
                     $record->update(['status_pengiriman' => 'Telah Sampai']);
                 }),

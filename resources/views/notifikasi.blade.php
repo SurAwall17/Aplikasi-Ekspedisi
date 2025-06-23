@@ -27,29 +27,32 @@
       <!-- Tambahkan di dalam container di bagian pengiriman -->
       <div class="container" data-aos="fade-up">
         <div class="row g-3">
-          {{-- @foreach ($pengiriman as $item)
-            @if($item->status == 'Dalam Perjalanan') --}}
+          @foreach ($pengiriman as $item)
+            @if($item->status_pengiriman == 'Dalam Perjalanan')
               <div class="col-12">
-                <div class="alert alert-info d-flex align-items-center" role="alert">
+                <div class="alert alert-info alert-dismissible fade show d-flex align-items-center" role="alert">
                   <i class="bi bi-truck me-2"></i>
                   <div>
-                    Barang dengan ID <strong>19818 {{-- {{ $item->id }} --}}</strong> sedang dalam perjalanan ke Tujuan.
+                    Barang dengan Resi <strong>{{ $item->resi }}</strong> sedang dalam perjalanan ke tujuan.
                   </div>
+                  <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               </div>
-            {{-- @elseif($item->status == 'Sudah Sampai')
+            @elseif($item->status_pengiriman == 'Telah Sampai')
               <div class="col-12">
-                <div class="alert alert-success d-flex align-items-center" role="alert">
+                <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
                   <i class="bi bi-check-circle me-2"></i>
                   <div>
-                    Barang dengan ID <strong>#{{ $item->id }}</strong> telah sampai di tujuan.
+                    Barang dengan Resi <strong>{{ $item->resi }}</strong> telah sampai di tujuan.
                   </div>
+                  <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               </div>
             @endif
-          @endforeach --}}
+          @endforeach
         </div>
       </div>
+
 
 
 

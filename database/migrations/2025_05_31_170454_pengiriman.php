@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('pengiriman', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('truk_id')->constrained('truk')->cascadeOnDelete();
-            $table->foreignId('gudang_id')->constrained('gudang')->cascadeOnDelete();
+            $table->foreignId('truk_id')->nullable()->constrained('truk')->cascadeOnDelete();
+            $table->foreignId('gudang_id')->nullable()->constrained('gudang')->cascadeOnDelete();
+            $table->string('resi');
             $table->string('penerima');
             $table->string('nohp_penerima');
             $table->string('nama_barang');

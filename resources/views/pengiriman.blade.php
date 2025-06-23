@@ -39,10 +39,11 @@
     <table id="myTable" class="display">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Customer</th>
-          <th>Truk</th>
-          <th>Gudang</th>
+          <th>No</th>
+          <th>Resi</th>
+          <th>Nama Pengirim</th>
+          {{-- <th>Truk</th>
+          <th>Gudang</th> --}}
           <th>Nama Penerima</th>
           <th>No HP</th>
           <th>Nama Barang</th>
@@ -59,10 +60,11 @@
         
         @foreach ($data as $item)
           <tr>
-            <td>{{ $item->id }}</td>
+            <td>{{ $i++ }}</td>
+            <td>{{ $item->resi }}</td>
             <td>{{ $item->user->name }}</td>
-            <td>{{ $item->truk->nama_truk }}</td>
-            <td>{{ $item->gudang->kode_tempat }}</td>
+            {{-- <td>{{ $item->truk->nama_truk }}</td>
+            <td>{{ $item->gudang->kode_tempat }}</td> --}}
             <td>{{ $item->penerima }}</td>
             <td>{{ $item->nohp_penerima }}</td>
             <td>{{ $item->nama_barang }}</td>
@@ -71,7 +73,27 @@
             <td>{{ $item->type }}</td>
             <td>{{ $item->harga }}</td>
             <td>{{ $item->tgl_pengiriman }}</td>
-            <td>{{ $item->status_pengiriman }}</td>
+            <td>
+              @if ($item->status_pengiriman === 'Menunggu')
+                <span class="badge bg-warning text-dark">
+                  <i class="bi bi-hourglass-split me-1"></i> Menunggu
+                </span>
+              @elseif ($item->status_pengiriman === 'Dalam Perjalanan')
+                <span class="badge bg-primary">
+                  <i class="bi bi-truck me-1"></i> Dalam Perjalanan
+                </span>
+              @elseif ($item->status_pengiriman === 'Telah Sampai')
+                <span class="badge bg-success">
+                  <i class="bi bi-check-circle me-1"></i> Terkirim
+                </span>
+              @else
+                <span class="badge bg-secondary">
+                  <i class="bi bi-question-circle me-1"></i> {{ $item->status_pengiriman }}
+                </span>
+              @endif
+            </td>
+
+
             
             
           </tr>
