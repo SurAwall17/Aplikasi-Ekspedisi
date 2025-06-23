@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bank;
 use App\Models\Truk;
 use App\Models\User;
 use App\Models\Gudang;
@@ -14,6 +15,7 @@ class PengirimanController extends Controller
     public function dataPengiriman(){
         $i = 1;
         $id = Auth()->user()->id;
+        $bank = Bank::all();
         $data = Pengiriman::with(['user', 'truk', 'gudang'])
                 ->where('user_id', $id)
                 ->get();
@@ -21,7 +23,8 @@ class PengirimanController extends Controller
         return view('pengiriman', [
             'i' => $i,
             'title' => 'pengiriman',
-            'data' => $data
+            'data' => $data,
+            'bank' => $bank
         ]);
     }
 

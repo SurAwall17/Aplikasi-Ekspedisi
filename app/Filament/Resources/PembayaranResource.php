@@ -2,16 +2,19 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PembayaranResource\Pages;
-use App\Filament\Resources\PembayaranResource\RelationManagers;
-use App\Models\Pembayaran;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Pembayaran;
 use Filament\Tables\Table;
+use Filament\Actions\Action;
+use Filament\Resources\Resource;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\PembayaranResource\Pages;
+use App\Filament\Resources\PembayaranResource\RelationManagers;
 
 class PembayaranResource extends Resource
 {
@@ -42,14 +45,26 @@ class PembayaranResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('user.pengiriman.resi'),
+                TextColumn::make('user.name'),
+                TextColumn::make('user.pengiriman.harga'),
+                ImageColumn::make('bukti_pembayaran')->square()
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('lihat_bukti')
+                    ->label('Lihat Bukti')
+                    ->icon('heroicon-o-eye')
+                    ->color('info')
+                    ->visible(fn ($record) => !empty($record->bukti_pembayaran))
+                    ->url(fn ($record) => asset('storage/' . $record->bukti_pembayaran))
+                    ->openUrlInNewTab(),
+                    // Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
             ])
+                
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

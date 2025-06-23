@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\NotifikasiController;
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PengirimanController;
 
 /*
@@ -32,6 +33,7 @@ Route::get('/', function () {
 })->middleware('auth');
 
 
+Route::post('/pembayaran', [PembayaranController::class, 'pembayaran']);
 Route::get('/notifikasi', [NotifikasiController::class, 'notifikasi']);
 Route::get('/pengiriman', [PengirimanController::class, 'dataPengiriman']);
 Route::get('/form-pengiriman', [PengirimanController::class, 'formPengiriman']);

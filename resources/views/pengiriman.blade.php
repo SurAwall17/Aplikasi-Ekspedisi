@@ -53,6 +53,7 @@
           <th>Harga</th>
           <th>Tanggal Pengiriman</th>
           <th>Status</th>
+          <th>Pembayaran</th>
           {{-- <th>Aksi</th> --}}
         </tr>
       </thead>
@@ -92,6 +93,56 @@
                 </span>
               @endif
             </td>
+            <td align="center">
+              <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalBayar">
+                <i class="bi bi-credit-card"></i> Bayar
+              </button>
+            </td>
+            <!-- Modal Pembayaran -->
+            <div class="modal fade" id="modalBayar" tabindex="-1" aria-labelledby="modalBayarLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <form action="/pembayaran" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalBayarLabel">Upload Bukti Pembayaran</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label class="form-label">Informasi Rekening Tujuan:</label>
+                        @foreach ($bank as $item)
+                          <div class="d-flex align-items-center mb-2">
+                            <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama_bank }}" width="60" class="me-3 rounded shadow">
+                            <div>
+                              <strong>{{ $item->nama_bank }}</strong><br>
+                              a.n. {{ $item->nama_pemilik }}<br>
+                              No. Rek: {{ $item->no_rekening }}
+                            </div>
+                          </div>
+                        @endforeach
+                      </div>
+                        
+                        <input class="form-control" type="text" name="metode" value="Transfer" id="metode" hidden>
+                      
+                      <div class="mb-3">
+                        <label for="bukti_bayar" class="form-label">Upload Bukti Pembayaran (JPG, PNG)</label>
+                        <input class="form-control" type="file" name="bukti_bayar" id="bukti_bayar" accept="image/*" required>
+                      </div>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary">Kirim</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+
+
 
 
             
