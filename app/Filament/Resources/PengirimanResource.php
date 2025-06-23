@@ -238,17 +238,17 @@ class PengirimanResource extends Resource
 
 
                 Tables\Actions\Action::make('konfirmasiSampai')
-                ->label('Tandai Sudah Sampai')
-                ->icon('heroicon-o-question-mark-circle')
-                ->color('warning')
-                ->visible(fn ($record) => $record->status_pengiriman === 'Dalam Perjalanan')
-                ->requiresConfirmation()
-                ->modalHeading('Konfirmasi Pengiriman')
-                ->modalSubheading('Apakah Anda yakin bahwa barang telah sampai di tujuan?')
-                ->modalButton('Ya, Barang Sudah Sampai')
-                ->action(function ($record) {
-                    $record->update(['status_pengiriman' => 'Telah Sampai']);
-                }),
+                    ->label('Tandai Sudah Sampai')
+                    ->icon('heroicon-o-question-mark-circle')
+                    ->color('warning')
+                    ->visible(fn ($record) => $record->status_pengiriman === 'Dalam Perjalanan')
+                    ->requiresConfirmation()
+                    ->modalHeading('Konfirmasi Pengiriman')
+                    ->modalSubheading('Apakah Anda yakin bahwa barang telah sampai di tujuan?')
+                    ->modalButton('Ya, Barang Sudah Sampai')
+                    ->action(function ($record) {
+                        $record->update(['status_pengiriman' => 'Telah Sampai']);
+                    }),
 
                 Tables\Actions\EditAction::make()->color('warning'),
                 Tables\Actions\DeleteAction::make(),

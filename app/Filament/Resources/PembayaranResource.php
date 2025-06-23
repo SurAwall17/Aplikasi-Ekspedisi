@@ -46,9 +46,19 @@ class PembayaranResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('user.pengiriman.resi'),
-                TextColumn::make('user.name'),
+                TextColumn::make('user.name')->label('Pengirim'),
                 TextColumn::make('user.pengiriman.harga'),
-                ImageColumn::make('bukti_pembayaran')->square()
+                ImageColumn::make('bukti_pembayaran')->square(),
+                TextColumn::make('status')
+                ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'Telah Dikonfirmasi' => 'success',
+                        'Menunggu Konfirmasi' => 'warning',
+                    })
+                    ->icon(fn (string $state): string => match ($state) {
+                        'Menunggu Konfirmasi' => 'heroicon-o-clock',
+                        'Telah Dikonfirmasi' => 'heroicon-o-check-circle',
+                    }),
             ])
             ->filters([
                 //
@@ -62,8 +72,24 @@ class PembayaranResource extends Resource
                     ->url(fn ($record) => asset('storage/' . $record->bukti_pembayaran))
                     ->openUrlInNewTab(),
                     // Tables\Actions\EditAction::make(),
-                    Tables\Actions\DeleteAction::make(),
-            ])
+                    
+                Tables\Actions\Action::make('konfirmasi')
+                    ->label('Konfirmasi')
+                    ->icon('heroicon-o-check-badge')
+                    ->color('success')
+                    ->modalHeading('Konfirmasi Pembayaran')
+                    ->requiresConfirmation()
+                    ->modalSubHeading('Anda yakin ingin mengkonfirmasi pembayaran ini?')
+                    ->modalButton('Ya, Konfirmasi Pembayaran')
+                    ->action(function ($record){
+                        $record->update(['status' => 'Telah Dikonfirmasi']);
+                    }),
+
+
+
+                    Tables\Actions\DeleteAction::make()
+                ])
+                
                 
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
