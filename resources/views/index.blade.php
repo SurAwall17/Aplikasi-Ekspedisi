@@ -9,9 +9,9 @@
         <div class="row gy-4">
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
             <h1>Welcome to <span>Xpedisi Fajar Bone</span></h1>
-            <p>We are team of talented designers making websites with Bootstrap</p>
+            <p>Layanan pengiriman barang dengan kecepatan, keamanan, dan pelayanan terbaik.</p>
             <div class="d-flex">
-              <a href="#about" class="btn-get-started">Get Started</a>
+              <a href="/pengiriman" class="btn-get-started">Get Started</a>
               <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
             </div>
           </div>
@@ -29,35 +29,36 @@
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-activity icon"></i></div>
-              <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <div class="icon"><i class="bi bi-truck icon"></i></div>
+              <h4><a href="" class="stretched-link">Pengiriman Cepat</a></h4>
+              <p>Proses pengiriman barang dengan waktu yang efisien dan armada yang siap menjangkau berbagai wilayah.</p>
             </div>
           </div><!-- End Service Item -->
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-              <h4><a href="" class="stretched-link">Sed ut perspici</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <div class="icon"><i class="bi bi-box-seam icon"></i></div>
+              <h4><a href="" class="stretched-link">Pelacakan Resi</a></h4>
+              <p>Fitur pelacakan real-time untuk mengetahui status dan lokasi barang secara akurat kapan saja.</p>
             </div>
           </div><!-- End Service Item -->
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-              <h4><a href="" class="stretched-link">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <div class="icon"><i class="bi bi-shield-check icon"></i></div>
+              <h4><a href="" class="stretched-link">Keamanan Terjamin</a></h4>
+              <p>Barang Anda kami tangani dengan prosedur pengiriman yang aman dan penuh tanggung jawab.</p>
             </div>
           </div><!-- End Service Item -->
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-broadcast icon"></i></div>
-              <h4><a href="" class="stretched-link">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <div class="icon"><i class="bi bi-headset icon"></i></div>
+              <h4><a href="" class="stretched-link">Layanan Pelanggan</a></h4>
+              <p>Dukungan pelanggan yang siap membantu 24/7 untuk kebutuhan informasi dan bantuan pengiriman.</p>
             </div>
           </div><!-- End Service Item -->
+          <!-- End Service Item -->
 
         </div>
 
@@ -70,57 +71,53 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <p><span>Find Out More</span> <span class="description-title">About Us</span></p>
+        <h2>Tentang Kami</h2>
+        <p><span>Kenali Lebih Dekat</span> <span class="description-title">Xpedisi Fajar Bone</span></p>
       </div><!-- End Section Title -->
 
       <div class="container">
-
         <div class="row gy-3">
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <img src="{{ asset('assets/img/about.jpg')}}" alt="" class="img-fluid">
+            <img src="{{ asset('assets/img/about.jpg')}}" alt="Tentang Xpedisi" class="img-fluid">
           </div>
 
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="about-content ps-0 ps-lg-3">
-              <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+              <h3>Layanan Ekspedisi Terpercaya dan Tepat Waktu.</h3>
               <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                Xpedisi Fajar Bone hadir sebagai solusi pengiriman barang yang cepat, aman, dan profesional untuk seluruh wilayah Indonesia.
               </p>
               <ul>
                 <li>
                   <i class="bi bi-diagram-3"></i>
                   <div>
-                    <h4>Ullamco laboris nisi ut aliquip consequat</h4>
-                    <p>Magni facilis facilis repellendus cum excepturi quaerat praesentium libre trade</p>
+                    <h4>Jaringan Luas dan Terintegrasi</h4>
+                    <p>Kami didukung oleh sistem manajemen pengiriman yang modern dan armada pengiriman yang siap menjangkau hingga ke pelosok.</p>
                   </div>
                 </li>
                 <li>
                   <i class="bi bi-fullscreen-exit"></i>
                   <div>
-                    <h4>Magnam soluta odio exercitationem reprehenderi</h4>
-                    <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata redi</p>
+                    <h4>Layanan Pelanggan yang Responsif</h4>
+                    <p>Tim support kami siap membantu kebutuhan Anda, memberikan informasi status pengiriman dan solusi terbaik dengan cepat.</p>
                   </div>
                 </li>
               </ul>
               <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum
+                Komitmen kami adalah memberikan layanan ekspedisi terbaik untuk setiap pengiriman Anda. Dengan sistem pelacakan real-time dan proses yang transparan, kami hadir sebagai mitra logistik terpercaya untuk kebutuhan pribadi maupun bisnis Anda.
               </p>
             </div>
-
           </div>
-        </div>
 
+        </div>
       </div>
 
-    </section><!-- /About Section -->
+    </section>
+<!-- /About Section -->
 
     <!-- Skills Section -->
-    <section id="skills" class="skills section">
+    {{-- <section id="skills" class="skills section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -180,52 +177,51 @@
 
       </div>
 
-    </section><!-- /Skills Section -->
+    </section><!-- /Skills Section --> --}}
 
     <!-- Stats Section -->
     <section id="stats" class="stats section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row gy-4">
 
           <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
             <i class="bi bi-emoji-smile"></i>
             <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Happy Clients</p>
+              <span data-purecounter-start="0" data-purecounter-end="1200" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Pelanggan Puas</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-            <i class="bi bi-journal-richtext"></i>
+            <i class="bi bi-truck"></i>
             <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Projects</p>
+              <span data-purecounter-start="0" data-purecounter-end="3500" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Pengiriman Selesai</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
             <i class="bi bi-headset"></i>
             <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
+              <span data-purecounter-start="0" data-purecounter-end="365" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Dukungan Setiap Hari</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
             <i class="bi bi-people"></i>
             <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hard Workers</p>
+              <span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Tim Profesional</p>
             </div>
           </div><!-- End Stats Item -->
 
         </div>
-
       </div>
 
-    </section><!-- /Stats Section -->
+    </section>
+    <!-- /Stats Section -->
 
     <!-- Clients Section -->
     <section id="clients" class="clients section light-background">
@@ -285,96 +281,80 @@
     <!-- Services Section -->
     <section id="services" class="services section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
-        <p><span>Check Our</span> <span class="description-title">Services</span></p>
-      </div><!-- End Section Title -->
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Layanan Kami</h2>
+    <p><span>Temukan</span> <span class="description-title">Layanan Xpedisi Fajar Bone</span></p>
+  </div><!-- End Section Title -->
 
-      <div class="container">
+  <div class="container">
+    <div class="row gy-4">
 
-        <div class="row gy-4">
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-activity"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Nesciunt Mete</h3>
-              </a>
-              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-broadcast"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Eosle Commodi</h3>
-              </a>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-easel"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Ledo Markt</h3>
-              </a>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-bounding-box-circles"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Asperiores Commodit</h3>
-              </a>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-calendar4-week"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Velit Doloremque</h3>
-              </a>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-chat-square-text"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Dolori Architecto</h3>
-              </a>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-item position-relative">
+          <div class="icon"><i class="bi bi-truck"></i></div>
+          <a href="#" class="stretched-link">
+            <h3>Pengiriman Reguler</h3>
+          </a>
+          <p>Layanan pengiriman barang dengan estimasi waktu standar dan harga terjangkau ke seluruh wilayah Indonesia.</p>
         </div>
-
       </div>
 
-    </section><!-- /Services Section -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-item position-relative">
+          <div class="icon"><i class="bi bi-lightning-charge"></i></div>
+          <a href="#" class="stretched-link">
+            <h3>Pengiriman Ekspres</h3>
+          </a>
+          <p>Khusus untuk Anda yang membutuhkan pengiriman cepat dan prioritas dengan estimasi waktu lebih singkat.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-item position-relative">
+          <div class="icon"><i class="bi bi-pin-map"></i></div>
+          <a href="#" class="stretched-link">
+            <h3>Pelacakan Barang</h3>
+          </a>
+          <p>Fitur real-time tracking untuk mengetahui lokasi dan status pengiriman barang kapan saja melalui nomor resi.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-item position-relative">
+          <div class="icon"><i class="bi bi-building"></i></div>
+          <a href="#" class="stretched-link">
+            <h3>Jemput Barang di Lokasi</h3>
+          </a>
+          <p>Kami menyediakan layanan penjemputan barang langsung ke rumah atau lokasi Anda tanpa biaya tambahan.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+        <div class="service-item position-relative">
+          <div class="icon"><i class="bi bi-people"></i></div>
+          <a href="#" class="stretched-link">
+            <h3>Kemitraan Ekspedisi</h3>
+          </a>
+          <p>Layanan kerjasama untuk toko online, distributor, atau pelaku UMKM dengan tarif khusus dan pengiriman rutin.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+        <div class="service-item position-relative">
+          <div class="icon"><i class="bi bi-chat-dots"></i></div>
+          <a href="#" class="stretched-link">
+            <h3>Konsultasi & Layanan Pelanggan</h3>
+          </a>
+          <p>Hubungi tim kami untuk bantuan terkait pengiriman, tarif, jadwal, dan solusi pengiriman yang sesuai kebutuhan Anda.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+<!-- /Services Section -->
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section dark-background">
@@ -701,7 +681,7 @@
     </section><!-- /Team Section -->
 
     <!-- Pricing Section -->
-    <section id="pricing" class="pricing section">
+    {{-- <section id="pricing" class="pricing section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -786,82 +766,76 @@
 
       </div>
 
-    </section><!-- /Pricing Section -->
+    </section><!-- /Pricing Section --> --}}
 
     <!-- Faq Section -->
     <section id="faq" class="faq section light-background">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>F.A.Q</h2>
-        <p><span>Frequently Asked</span> <span class="description-title">Questions</span></p>
-      </div><!-- End Section Title -->
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>F.A.Q</h2>
+    <p><span>Pertanyaan yang</span> <span class="description-title">Sering Diajukan</span></p>
+  </div><!-- End Section Title -->
 
-      <div class="container">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <div class="faq-container">
 
-        <div class="row justify-content-center">
-
-          <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="faq-container">
-
-              <div class="faq-item faq-active">
-                <h3>Non consectetur a erat nam at lectus urna duis?</h3>
-                <div class="faq-content">
-                  <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Feugiat scelerisque varius morbi enim nunc faucibus?</h3>
-                <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
-                <div class="faq-content">
-                  <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
-                <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Tempus quam pellentesque nec nam aliquam sem et tortor?</h3>
-                <div class="faq-content">
-                  <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
-                <div class="faq-content">
-                  <p>Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed in suscipit sequi. Distinctio ipsam dolore et.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
+          <div class="faq-item faq-active">
+            <h3>Bagaimana cara melakukan pengiriman barang?</h3>
+            <div class="faq-content">
+              <p>Anda bisa mengisi form pengiriman di aplikasi kami, memilih jenis layanan, lalu menyerahkan barang ke gudang atau meminta penjemputan langsung ke lokasi Anda.</p>
             </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div>
 
-          </div><!-- End Faq Column-->
+          <div class="faq-item">
+            <h3>Apakah saya bisa melacak barang yang sedang dikirim?</h3>
+            <div class="faq-content">
+              <p>Tentu, Anda bisa melacak barang melalui fitur "Lacak Pengiriman" menggunakan nomor resi yang diberikan setelah pengiriman terdaftar.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div>
+
+          <div class="faq-item">
+            <h3>Berapa lama estimasi pengiriman?</h3>
+            <div class="faq-content">
+              <p>Estimasi pengiriman tergantung jenis layanan yang Anda pilih: Reguler (3–5 hari), Ekspres (1–2 hari), dan Kargo (5–7 hari untuk barang besar).</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div>
+
+          <div class="faq-item">
+            <h3>Apakah tersedia layanan penjemputan barang?</h3>
+            <div class="faq-content">
+              <p>Ya, kami menyediakan layanan jemput barang ke lokasi Anda, terutama untuk pengguna layanan Ekspres dan pelanggan korporat.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div>
+
+          <div class="faq-item">
+            <h3>Bagaimana jika barang saya rusak atau hilang?</h3>
+            <div class="faq-content">
+              <p>Kami memiliki prosedur klaim dan asuransi untuk barang yang rusak atau hilang selama pengiriman. Silakan hubungi tim support kami untuk bantuan.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div>
+
+          <div class="faq-item">
+            <h3>Apakah tersedia tarif khusus untuk UMKM atau reseller?</h3>
+            <div class="faq-content">
+              <p>Ya, kami menyediakan program kemitraan untuk UMKM, toko online, dan reseller dengan tarif khusus dan layanan penjemputan rutin.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div>
 
         </div>
-
-      </div>
-
-    </section><!-- /Faq Section -->
+      </div><!-- End Faq Column-->
+    </div>
+  </div>
+</section>
+<!-- /Faq Section -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
@@ -883,7 +857,7 @@
                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                 <div>
                   <h3>Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
+                  <p>Jl. Cakalang, No. 30, Kota Makassar</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -903,7 +877,8 @@
                 </div>
               </div><!-- End Info Item -->
 
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.913901302582!2d119.41543107324655!3d-5.117576551812716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbefd625b1f6991%3A0xc39b2a7705c3a4a9!2sEkspedisi%20Fajar%20Bone!5e0!3m2!1sid!2sid!4v1751272072314!5m2!1sid!2sid" width="100%" height="270px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
 

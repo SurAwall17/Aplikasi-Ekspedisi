@@ -71,10 +71,16 @@
             <li><a href="/#about">About</a></li>
             <li><a href="/#contact">Contact</a></li>
             <li><a href="/#faq">FAQ</a></li>
-            <li class="dropdown"><a href="#"><img width="25px"
-              src="{{ Auth::user()->foto ? asset('storage/foto/' . Auth::user()->foto) : Avatar::create(Auth::user()->name)->toBase64() }}"
-              alt="User Avatar"
-              class="rounded-full"> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <li class="dropdown">
+              <a href="#">
+                <img width="25px"
+                  src="{{ Auth::user()->foto ? asset('storage/foto/' . Auth::user()->foto) : Avatar::create(Auth::user()->name)->toBase64() }}"
+                  alt="User Avatar"
+                  class="rounded-circle"
+                  style="width: 30px; height: 30px; object-fit: cover;">
+                <i class="bi bi-chevron-down toggle-dropdown"></i>
+              </a>
+
               <ul>
                 <li>
                   <a href="/profile/{{ Auth()->user()->id }}" class="{{ ($title == "profile")? "text-danger" : "" }} d-inline-block w-100 p-1 fs-6">
