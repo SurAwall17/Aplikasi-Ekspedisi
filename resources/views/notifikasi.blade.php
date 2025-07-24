@@ -74,37 +74,36 @@
 
             @endif
             <div class="modal fade" id="modalUlasan{{ $item->id }}" tabindex="-1" aria-labelledby="modalUlasanLabel{{ $item->id }}" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalUlasanLabel{{ $item->id }}">Beri Ulasan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center">
-                
-                <!-- Rating Bintang -->
-                <div class="mb-3">
-                    <div class="rating" id="rating-{{ $item->id }}">
-                        @for ($i = 1; $i <= 5; $i++)
-                            <i class="bi bi-star star" data-value="{{ $i }}"></i>
-                        @endfor
-                    </div>
-                </div>
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="modalUlasanLabel{{ $item->id }}">Beri Ulasan</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body text-center">
+                          
+                          <!-- Rating Bintang -->
+                          <div class="mb-3">
+                              <div class="rating" id="rating-{{ $item->id }}">
+                                  @for ($i = 1; $i <= 5; $i++)
+                                      <i class="bi bi-star star" data-value="{{ $i }}"></i>
+                                  @endfor
+                              </div>
+                          </div>
 
-                <!-- Textarea Ulasan -->
-                <div class="mb-3">
-                    <textarea class="form-control" rows="3" placeholder="Tulis ulasan Anda..." id="ulasan-{{ $item->id }}"></textarea>
-                </div>
-                
+                          <!-- Textarea Ulasan -->
+                          <div class="mb-3">
+                              <textarea class="form-control" rows="3" placeholder="Tulis ulasan Anda..." id="ulasan-{{ $item->id }}"></textarea>
+                          </div>
+                          
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                          <button type="button" class="btn btn-primary" onclick="kirimUlasan({{ $item->id }})">Kirim</button>
+                      </div>
+                  </div>
+              </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="button" class="btn btn-primary" onclick="kirimUlasan({{ $item->id }})">Kirim</button>
-            </div>
-        </div>
-    </div>
-</div>
-
           @endforeach
         </div>
       </div>
@@ -116,40 +115,62 @@
 
   </main>
   <script>
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll('.rating').forEach(ratingEl => {
-        const stars = ratingEl.querySelectorAll('.star');
-        stars.forEach(star => {
-            star.addEventListener('click', function () {
-                const value = this.getAttribute('data-value');
-                stars.forEach(s => {
-                    s.classList.toggle('selected', s.getAttribute('data-value') <= value);
-                });
-                ratingEl.setAttribute('data-selected', value);
-            });
-        });
-    });
-});
+      document.addEventListener("DOMContentLoaded", function () {
+          document.querySelectorAll('.rating').forEach(ratingEl => {
+              const stars = ratingEl.querySelectorAll('.star');
+              stars.forEach(star => {
+                  star.addEventListener('click', function () {
+                      const value = this.getAttribute('data-value');
+                      stars.forEach(s => {
+                          s.classList.toggle('selected', s.getAttribute('data-value') <= value);
+                      });
+                      ratingEl.setAttribute('data-selected', value);
+                  });
+              });
+          });
+      });
 
-function kirimUlasan(id) {
-    const rating = document.getElementById('rating-' + id).getAttribute('data-selected') || 0;
-    const ulasan = document.getElementById('ulasan-' + id).value;
+      function kirimUlasan(id) {
+          const rating = document.getElementById('rating-' + id).getAttribute('data-selected') || 0;
+          const ulasan = document.getElementById('ulasan-' + id).value;
 
-    if (rating == 0) {
-        alert("Silakan pilih rating!");
-        return;
-    }
+          if (rating == 0) {
+              alert("Silakan pilih rating!");
+              return;
+          }
 
-    if (ulasan.trim() === "") {
-        alert("Silakan tulis ulasan Anda!");
-        return;
-    }
+          if (ulasan.trim() === "") {
+              alert("Silakan tulis ulasan Anda!");
+              return;
+          }
 
-    // Kirim dengan AJAX atau form (contoh alert dulu)
-    alert("Rating: " + rating + "\nUlasan: " + ulasan);
+          fetch("{{ route('ulasan.store') }}", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+                  "X-CSRF-TOKEN": "{{ csrf_token() }}"
+              },
+              body: JSON.stringify({
+                  pengiriman_id: id,
+                  rating: rating,
+                  komentar: ulasan
+              })
+          })
+          .then(response => response.json())
+          .then(data => {
+              if (data.success) {
+                  alert("Terima kasih atas ulasannya!");
+                  location.reload(); // reload halaman setelah berhasil
+              } else {
+                  alert("Gagal menyimpan ulasan!");
+              }
+          })
+          .catch(error => {
+              console.error("Error:", error);
+              alert("Terjadi kesalahan!");
+          });
+      }
 
-    // TODO: Kirim ke server dengan AJAX atau form submit
-}
 </script>
 
 @include('partials.footer')

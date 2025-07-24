@@ -11,7 +11,7 @@ class NotifikasiController extends Controller
         $pengiriman = Pengiriman::where('user_id', Auth()->user()->id)->get();
         return view('notifikasi', [
             'pengiriman' => $pengiriman,
-            'title' => 'Notifikasi'
+            'title' => 'notifikasi'
         ]);
     }
 }

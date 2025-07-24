@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UlasanResource\Pages;
-use App\Filament\Resources\UlasanResource\RelationManagers;
-use App\Models\Ulasan;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Ulasan;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\UlasanResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\UlasanResource\RelationManagers;
 
 class UlasanResource extends Resource
 {
@@ -42,13 +43,29 @@ class UlasanResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('pengiriman.user.name')->searchable(),
+                TextColumn::make('komentar')->searchable(),
+                TextColumn::make('rating')
+                    ->label('Rating')
+                    ->formatStateUsing(function ($state) {
+                        $stars = '';
+                        for ($i = 1; $i <= 5; $i++) {
+                            $stars .= $i <= $state
+                                ? '⭐'
+                                : '☆';
+                        }
+                        return $stars;
+                    })
+                    ->html(),
+
+                TextColumn::make('tgl_ulasan')->searchable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
