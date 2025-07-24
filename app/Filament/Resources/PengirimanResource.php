@@ -204,58 +204,6 @@ class PengirimanResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\Action::make('kirim')
-                ->label('Kirim')
-                ->icon('heroicon-o-truck')
-                ->color('info')
-                ->visible(fn ($record) => $record->status_pengiriman === 'Sedang Diproses')
-                ->requiresConfirmation()
-                ->modalHeading('Konfirmasi Pengiriman')
-                ->modalSubheading('Silakan pilih gudang dan truk untuk pengiriman ini.')
-                ->modalButton('Kirim Sekarang')
-                ->form(function ($record) {
-                    // Jika gudang_id dan truk_id sudah ada, tidak perlu tampilkan form
-                    if ($record->gudang_id && $record->truk_id) {
-                        return []; // Tidak tampilkan form
-                    }
-
-                    return [
-                        Forms\Components\Select::make('gudang_id')
-                            ->label('Gudang Tujuan')
-                            ->options(\App\Models\Gudang::all()->pluck('kode_tempat', 'id'))
-                            ->searchable()
-                            ->required(),
-
-                        Forms\Components\Select::make('truk_id')
-                            ->label('Truk Pengirim')
-                            ->options(\App\Models\Truk::all()->pluck('nama_truk', 'id'))
-                            ->searchable()
-                            ->required(),
-                    ];
-                })
-                ->action(function ($record, array $data) {
-                    $record->update([
-                        'status_pengiriman' => 'Dalam Perjalanan',
-                        'gudang_id' => $record->gudang_id ?? $data['gudang_id'] ?? null,
-                        'truk_id' => $record->truk_id ?? $data['truk_id'] ?? null,
-                    ]);
-                }),
-
-
-
-                Tables\Actions\Action::make('konfirmasiSampai')
-                    ->label('Tandai Sudah Sampai')
-                    ->icon('heroicon-o-question-mark-circle')
-                    ->color('warning')
-                    ->visible(fn ($record) => $record->status_pengiriman === 'Dalam Perjalanan')
-                    ->requiresConfirmation()
-                    ->modalHeading('Konfirmasi Pengiriman')
-                    ->modalSubheading('Apakah Anda yakin bahwa barang telah sampai di tujuan?')
-                    ->modalButton('Ya, Barang Sudah Sampai')
-                    ->action(function ($record) {
-                        $record->update(['status_pengiriman' => 'Telah Sampai']);
-                    }),
-
                 Tables\Actions\EditAction::make()->color('warning'),
                 Tables\Actions\DeleteAction::make(),
             ])

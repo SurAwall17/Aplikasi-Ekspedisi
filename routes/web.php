@@ -26,18 +26,19 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'form_register']);
 Route::post('/register', [RegisterController::class, 'register']);
 
-Route::get('/', function () {
-    return view('index',[
-        'title' => 'home'
-    ]);
-})->middleware('auth');
 
+Route::middleware(['auth','user'])->group(function () {
+    Route::get('/', function () {
+        return view('index',[
+            'title' => 'home'
+        ]);
+    });
+    Route::post('/pembayaran/{id}', [PembayaranController::class, 'pembayaran']);
+    Route::get('/notifikasi', [NotifikasiController::class, 'notifikasi']);
+    Route::get('/pengiriman', [PengirimanController::class, 'dataPengiriman']);
+    Route::get('/form-pengiriman', [PengirimanController::class, 'formPengiriman']);
+    Route::post('/tambah-pengiriman', [PengirimanController::class, 'tambahPengiriman']);
 
-Route::post('/pembayaran/{id}', [PembayaranController::class, 'pembayaran']);
-Route::get('/notifikasi', [NotifikasiController::class, 'notifikasi']);
-Route::get('/pengiriman', [PengirimanController::class, 'dataPengiriman']);
-Route::get('/form-pengiriman', [PengirimanController::class, 'formPengiriman']);
-Route::post('/tambah-pengiriman', [PengirimanController::class, 'tambahPengiriman']);
-
-Route::get('/profile/{id}', [ProfileController::class, 'profile']);
-Route::put('/profile/update', [ProfileController::class, 'updateProfile']);
+    Route::get('/profile/{id}', [ProfileController::class, 'profile']);
+    Route::put('/profile/update', [ProfileController::class, 'updateProfile']);
+});

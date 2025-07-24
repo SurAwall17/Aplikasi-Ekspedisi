@@ -7,8 +7,10 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use App\Models\Pengiriman;
 use Filament\Tables\Table;
+use Forms\Components\Date;
 use Filament\Resources\Resource;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\DatePicker;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\DataPengirimanResource\Pages;
@@ -107,6 +109,14 @@ class DataPengirimanResource extends Resource
                             ->options(\App\Models\Truk::all()->pluck('nama_truk', 'id'))
                             ->searchable()
                             ->required(),
+
+                        Forms\Components\DatePicker::make('tgl_pengiriman')
+                            ->label('Tanggal Pengiriman')
+                            ->native(false)
+                            ->default(now())
+                            ->required()
+                            ->displayFormat('Y-m-d')
+                            ->format('Y-m-d'),
                     ];
                 })
                 ->action(function ($record, array $data) {
@@ -114,6 +124,7 @@ class DataPengirimanResource extends Resource
                         'status_pengiriman' => 'Dalam Perjalanan',
                         'gudang_id' => $record->gudang_id ?? $data['gudang_id'] ?? null,
                         'truk_id' => $record->truk_id ?? $data['truk_id'] ?? null,
+                        'tgl_pengiriman' => $data['tgl_pengiriman'] ?? $record->tgl_pengiriman,
                     ]);
                 }),
 
@@ -129,7 +140,11 @@ class DataPengirimanResource extends Resource
                     ->modalSubheading('Apakah Anda yakin bahwa barang telah sampai di tujuan?')
                     ->modalButton('Ya, Barang Sudah Sampai')
                     ->action(function ($record) {
-                        $record->update(['status_pengiriman' => 'Telah Sampai']);
+                        $record->update([
+                            'status_pengiriman' => 'Telah Sampai',
+                            'gudang_id' => $record->gudang_id == 1 ? 2 : 1,
+                        ]);
+                        
                     }),
 
                 Tables\Actions\EditAction::make()->color('warning'),
