@@ -30,7 +30,14 @@ class BankResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('gambar'),
+                FileUpload::make('gambar')
+                ->label('Logo Bank')
+                ->directory('bank')
+                ->image()
+                ->maxSize(2048)
+                ->nullable()
+                ->visibility('public'),
+
                 TextInput::make('nama_bank'),
                 TextInput::make('nama_pemilik'),
                 TextInput::make('no_rekening')

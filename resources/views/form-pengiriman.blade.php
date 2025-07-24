@@ -110,8 +110,8 @@
               <label for="type" class="form-label">Type</label>
               <select id="type" name="type" class="form-select">
                 <option selected>Pilih Tipe</option>
-                <option value="Reguler">Reguler</option>
-                <option value="Ekspres">Ekspres</option>
+                <option value="fragile">Fragile</option>
+                <option value="non_fragile">Non Fragile</option>
               </select>
             </div>
 
@@ -122,13 +122,13 @@
             </div>
 
             <!-- Tanggal Pengiriman -->
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
               <label for="tglPengiriman" class="form-label">Tanggal Pengiriman</label>
               <input type="date" name="tgl_pengiriman" class="form-control" id="tglPengiriman">
-            </div>
+            </div> --}}
 
             
-            <input type="text" name="status_pengiriman" value="Sedang Diproses" class="form-control" id="status_pengiriman" hidden>
+            {{-- <input type="text" name="status_pengiriman" value="Menunggu Pembayaran" class="form-control" id="status_pengiriman" hidden> --}}
             
             {{-- <div class="col-md-6">
               <label for="statusPengiriman" class="form-label">Status Pengiriman</label>
@@ -162,7 +162,7 @@
   const volume = document.getElementById('volume')
 
   function hitungVolume(){
-    volume.value = (panjang.value * lebar.value * tinggi.value) / 4000
+    volume.value = (panjang.value * lebar.value * tinggi.value)
   }
 
   panjang.addEventListener('input', hitungVolume)

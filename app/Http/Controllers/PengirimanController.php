@@ -53,8 +53,9 @@ class PengirimanController extends Controller
             'volume' => 'required',
             'type' => 'required|max:255',
             'harga' => 'required',
-            'tgl_pengiriman' => 'required',
-            'status_pengiriman' => 'required'
+            // 'tgl_pengiriman' => 'required',
+            // 'status_pengiriman' => 'required',
+            // 'bobot_smart' => 'required'
         ]);
 
         Pengiriman::create([
@@ -69,8 +70,9 @@ class PengirimanController extends Controller
             'volume' => $request->volume,
             'type' => $request->type,
             'harga' => $request->harga,
-            'tgl_pengiriman' => $request->tgl_pengiriman,
-            'status_pengiriman' => $request->status_pengiriman,
+            // 'tgl_pengiriman' => $request->tgl_pengiriman,
+            // 'status_pengiriman' => $request->status_pengiriman,
+            // 'bobot_smart' => $request->bobot,
         ]);
         return redirect('/pengiriman');
     }

@@ -24,8 +24,9 @@ return new class extends Migration
             $table->string('volume');
             $table->string('type');
             $table->string('harga');
-            $table->date('tgl_pengiriman');
+            $table->date('tgl_pengiriman')->nullable();
             $table->string('status_pengiriman');
+            $table->decimal('bobot_smart', 6, 3);
             $table->timestamps();
         });
     }

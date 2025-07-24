@@ -32,11 +32,20 @@ class PengirimanResource extends Resource
     {
         return 'Pengiriman';
     }
-    public static function getNavigationBadge(): ?string
+    // public static function getNavigationBadge(): ?string
+    // {
+    //     return static::getModel()::count();
+    // }
+    public static function getEloquentQuery(): Builder
     {
-        return static::getModel()::count();
+        return parent::getEloquentQuery()
+            ->where(function ($query) {
+            $query->where('status_pengiriman', 'Menunggu Konfirmasi')
+                  ->orWhere('status_pengiriman', 'Menunggu Pembayaran');
+        });
     }
-    
+
+
     protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
@@ -51,16 +60,16 @@ class PengirimanResource extends Resource
                             ->searchable()
                             ->required(),
 
-                        Select::make('truk_id')
-                            ->label('Truk')
-                            ->options(Truk::all()->pluck('kode_truk', 'id'))
-                            ->searchable()
-                            ->required(),
+                        // Select::make('truk_id')
+                        //     ->label('Truk')
+                        //     ->options(Truk::all()->pluck('kode_truk', 'id'))
+                        //     ->searchable()
+                        //     ->required(),
 
-                        Select::make('gudang_id')
-                            ->label('Gudang')
-                            ->options(Gudang::all()->pluck('kode_tempat', 'id'))
-                            ->searchable(),
+                        // Select::make('gudang_id')
+                        //     ->label('Gudang')
+                        //     ->options(Gudang::all()->pluck('kode_tempat', 'id'))
+                        //     ->searchable(),
                         
                         TextInput::make('penerima')
                             ->label('Nama Penerima')
@@ -94,13 +103,13 @@ class PengirimanResource extends Resource
                                 $tinggi = $get('tinggi') ?: 0;
 
                                 if ($state && $lebar && $tinggi) {
-                                    $volume = ($state * $lebar * $tinggi) / 4000;
+                                    $volume = $state * $lebar * $tinggi;
                                     $set('volume', $volume);
                                 }
                             }),
 
                         TextInput::make('lebar')
-                            ->required()
+                            ->required()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
                             ->numeric()
                             ->reactive()
                             ->suffix('cm')
@@ -109,9 +118,8 @@ class PengirimanResource extends Resource
                                 $panjang = $get('panjang') ?: 0;
                                 // $lebar = $get('lebar') ?: 0;
                                 $tinggi = $get('tinggi') ?: 0;
-
                                 if ($panjang && $state && $tinggi) {
-                                    $volume = ($state * $state * $tinggi) / 4000;
+                                    $volume = $state * $panjang * $tinggi;
                                     $set('volume', $volume);
                                 }
                             }),
@@ -128,7 +136,7 @@ class PengirimanResource extends Resource
                                 // $tinggi = $get('tinggi') ?: 0;
 
                                 if ($panjang && $lebar && $state) {
-                                    $volume = ($state * $lebar * $state) / 4000;
+                                    $volume = $state * $lebar * $panjang;
                                     $set('volume', $volume);
                                 }
                             }),
@@ -151,16 +159,10 @@ class PengirimanResource extends Resource
                             ->required()
                             ->prefix('Rp'),
                         
-                        DatePicker::make('tgl_pengiriman')
-                            ->required()
-                            ->minDate(Carbon::today()),
-                        
-                        Select::make('status_pengiriman')
-                            ->options([
-                                'Sedang Diproses' => 'Sedang Diproses',
-                                'Dalam Perjalanan' => 'Dalam Perjalanan',
-                                // 'non_fragile' => 'Barang Non-Fragile (Tahan Banting)',
-                            ]),
+                        // Select::make('status_pengiriman')
+                        //     ->default('Menunggu Konfirmasi')
+                        //     ->hidden()
+
                     ])
                     ->columns(2),
             ]);
@@ -178,19 +180,23 @@ class PengirimanResource extends Resource
                 TextColumn::make('penerima'),
                 TextColumn::make('harga')->formatStateUsing(fn ($state) => 'Rp ' . number_format($state, 0, ',', '.')),
                 TextColumn::make('nohp_penerima')->label('Nohp Penerima'),
-                TextColumn::make('truk.nama_truk'),
-                TextColumn::make('gudang.alamat'),
+                // TextColumn::make('truk.nama_truk'),
+                // TextColumn::make('gudang.alamat'),
                 TextColumn::make('status_pengiriman')->label('Status Pengiriman')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'Dalam Perjalanan' => 'info',
-                        'Telah Sampai' => 'success',
+                        'Menunggu Pembayaran' => 'info',
+                        'Menunggu Konfirmasi' => 'info',
                         'Sedang Diproses' => 'warning',
+                        'Telah Sampai' => 'success',
+                        default => 'gray',
                     })
                     ->icon(fn (string $state): string => match ($state) {
-                        'Dalam Perjalanan' => 'heroicon-o-truck',
-                        'Sedang Diproses' => 'heroicon-o-clock',
-                        'Telah Sampai' => 'heroicon-o-check-circle',
+                        'Menunggu Pembayaran'   => 'heroicon-o-currency-dollar',
+                        'Menunggu Konfirmasi'   => 'heroicon-o-clock',                
+                        'Sedang Diproses'       => 'heroicon-o-truck',                
+                        'Telah Sampai'          => 'heroicon-o-check-circle',         
+                        default                 => 'heroicon-o-question-mark-circle', 
                     }),
 
             ])

@@ -6,6 +6,7 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use App\Models\Pembayaran;
+use App\Models\Pengiriman;
 use Filament\Tables\Table;
 use Filament\Actions\Action;
 use Filament\Resources\Resource;
@@ -45,9 +46,9 @@ class PembayaranResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('user.pengiriman.resi'),
-                TextColumn::make('user.name')->label('Pengirim'),
-                TextColumn::make('user.pengiriman.harga'),
+                TextColumn::make('pengiriman.resi'),
+                TextColumn::make('pengiriman.user.name')->label('Pengirim'),
+                TextColumn::make('pengiriman.harga'),
                 ImageColumn::make('bukti_pembayaran')->square(),
                 TextColumn::make('status')
                 ->badge()
@@ -83,6 +84,9 @@ class PembayaranResource extends Resource
                     ->modalButton('Ya, Konfirmasi Pembayaran')
                     ->action(function ($record){
                         $record->update(['status' => 'Telah Dikonfirmasi']);
+
+                        Pengiriman::where('id', $record->pengiriman_id)
+                        ->update(['status_pengiriman' => 'Sedang Diproses']);
                     }),
 
 

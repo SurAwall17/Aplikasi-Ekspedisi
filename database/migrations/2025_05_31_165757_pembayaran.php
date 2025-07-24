@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('pengiriman_id')->nullable();
             $table->string('admin_id')->nullable();
             $table->string('metode');
-            $table->string('bukti_pembayaran');
+            $table->string('bukti_pembayaran')->nullable();
             $table->string('status');
             $table->date('tanggal');
             $table->timestamps();

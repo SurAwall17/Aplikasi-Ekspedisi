@@ -26,7 +26,7 @@ class TrukResource extends Resource
     {
         return 'Truk';
     }
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 4;
     
 
     public static function form(Form $form): Form
@@ -34,8 +34,7 @@ class TrukResource extends Resource
         return $form
             ->schema([
                 TextInput::make('kode_truk'),
-                TextInput::make('nama_truk'),
-                
+                TextInput::make('nama_truk'),   
             ]);
     }
 
