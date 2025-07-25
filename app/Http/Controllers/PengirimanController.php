@@ -6,12 +6,27 @@ use App\Models\Bank;
 use App\Models\Truk;
 use App\Models\User;
 use App\Models\Gudang;
+use App\Models\Ulasan;
 use App\Models\Pengiriman;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class PengirimanController extends Controller
 {
+
+    public function index(){
+        $jumlahUser = User::count();
+        $jumlahUlasan = Ulasan::count();
+        $jumlahTruk = Truk::count();
+        $jumlahPengiriman = Pengiriman::where('status_pengiriman', 'Telah Sampai')->count();
+        $title = "home";
+        $ulasan = Ulasan::with(['pengiriman', 'user'])
+        ->latest()
+        ->take(5)
+        ->get();
+    return view('index', compact(['title', 'ulasan', 'jumlahUser', 'jumlahUlasan', 'jumlahPengiriman', 'jumlahTruk']));
+    }
+
     public function dataPengiriman(){
         $i = 1;
         $id = Auth()->user()->id;

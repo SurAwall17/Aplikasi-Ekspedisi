@@ -12,7 +12,7 @@
             <p>Layanan pengiriman barang dengan kecepatan, keamanan, dan pelayanan terbaik.</p>
             <div class="d-flex">
               <a href="/pengiriman" class="btn-get-started">Get Started</a>
-              <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+              <a href="https://youtu.be/NyF7UoPeY10?si=eTDkdGMT9JgAEAW8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-box-seam icon"></i></div>
               <h4><a href="" class="stretched-link">Pelacakan Resi</a></h4>
-              <p>Fitur pelacakan real-time untuk mengetahui status dan lokasi barang secara akurat kapan saja.</p>
+              <p>Fitur pelacakan untuk mengetahui status dan lokasi barang secara akurat kapan saja.</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -188,7 +188,7 @@
           <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
             <i class="bi bi-emoji-smile"></i>
             <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="1200" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $jumlahUlasan }}" data-purecounter-duration="1" class="purecounter"></span>
               <p>Pelanggan Puas</p>
             </div>
           </div><!-- End Stats Item -->
@@ -196,7 +196,7 @@
           <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
             <i class="bi bi-truck"></i>
             <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="3500" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $jumlahPengiriman }}" data-purecounter-duration="1" class="purecounter"></span>
               <p>Pengiriman Selesai</p>
             </div>
           </div><!-- End Stats Item -->
@@ -204,16 +204,16 @@
           <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
             <i class="bi bi-headset"></i>
             <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="365" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Dukungan Setiap Hari</p>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $jumlahTruk }}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Total Truk</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
             <i class="bi bi-people"></i>
             <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Tim Profesional</p>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $jumlahUser }}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Pengguna</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -224,7 +224,7 @@
     <!-- /Stats Section -->
 
     <!-- Clients Section -->
-    <section id="clients" class="clients section light-background">
+    {{-- <section id="clients" class="clients section light-background">
 
       <div class="container">
 
@@ -276,7 +276,8 @@
 
       </div>
 
-    </section><!-- /Clients Section -->
+    </section> --}}
+    <!-- /Clients Section -->
 
     <!-- Services Section -->
     <section id="services" class="services section">
@@ -330,7 +331,7 @@
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+      {{-- <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
         <div class="service-item position-relative">
           <div class="icon"><i class="bi bi-people"></i></div>
           <a href="#" class="stretched-link">
@@ -338,7 +339,7 @@
           </a>
           <p>Layanan kerjasama untuk toko online, distributor, atau pelaku UMKM dengan tarif khusus dan pengiriman rutin.</p>
         </div>
-      </div>
+      </div> --}}
 
       <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
         <div class="service-item position-relative">
@@ -381,23 +382,32 @@
           </script>
           <div class="swiper-wrapper">
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            @foreach ($ulasan as $item)
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="{{ Auth::user()->foto ? asset('storage/foto/' . $item->pengiriman->user->name) : Avatar::create($item->pengiriman->user->name)->toBase64() }}" class="testimonial-img" alt="">
+                  <h3>{{ $item->pengiriman->user->name }}</h3>
+                  <h4>Pelanggan</h4>
+                  <div class="stars">
+                      @for ($i = 1; $i <= 5; $i++)
+                          @if ($i <= $item->rating)
+                              <i class="bi bi-star-fill text-warning"></i>
+                          @else
+                              <i class="bi bi-star text-muted"></i>
+                          @endif
+                      @endfor
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>{{ $item->komentar }}</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
                 </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
+              </div><!-- End testimonial item -->
+              @endforeach
 
-            <div class="swiper-slide">
+
+            {{-- <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                 <h3>Sara Wilsson</h3>
@@ -459,7 +469,7 @@
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div><!-- End testimonial item --> --}}
 
           </div>
           <div class="swiper-pagination"></div>
@@ -470,7 +480,7 @@
     </section><!-- /Testimonials Section -->
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+    {{-- <section id="portfolio" class="portfolio section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -587,10 +597,11 @@
 
       </div>
 
-    </section><!-- /Portfolio Section -->
+    </section> --}}
+    <!-- /Portfolio Section -->
 
     <!-- Team Section -->
-    <section id="team" class="team section light-background">
+    {{-- <section id="team" class="team section light-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -678,7 +689,8 @@
 
       </div>
 
-    </section><!-- /Team Section -->
+    </section> --}}
+    <!-- /Team Section -->
 
     <!-- Pricing Section -->
     {{-- <section id="pricing" class="pricing section">
@@ -883,7 +895,7 @@
           </div>
 
           <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form onsubmit="return sendToWhatsApp(event)" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
               <div class="row gy-4">
 
                 <div class="col-md-6">
@@ -896,10 +908,10 @@
                   <input type="email" class="form-control" name="email" id="email-field" required="">
                 </div>
 
-                <div class="col-md-12">
+                {{-- <div class="col-md-12">
                   <label for="subject-field" class="pb-2">Subject</label>
                   <input type="text" class="form-control" name="subject" id="subject-field" required="">
-                </div>
+                </div> --}}
 
                 <div class="col-md-12">
                   <label for="message-field" class="pb-2">Message</label>
@@ -907,16 +919,13 @@
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
                   <button type="submit">Send Message</button>
                 </div>
 
               </div>
             </form>
-          </div><!-- End Contact Form -->
+          </div>
+
 
         </div>
 
@@ -925,5 +934,23 @@
     </section><!-- /Contact Section -->
 
   </main>
+<script>
+function sendToWhatsApp(event) {
+    event.preventDefault(); // biar form tidak reload
+
+    let name = document.getElementById("name-field").value;
+    let email = document.getElementById("email-field").value;
+    // let subject = document.getElementById("subject-field").value;
+    let message = document.getElementById("message-field").value;
+
+    let no_wa = "6282159404632";
+
+    let text = `Halo, saya ${name} %0AEmail: ${email}%0APesan: ${message}`;
+
+    let url = `https://wa.me/${no_wa}?text=${text}`;
+
+    window.open(url, "_blank");
+}
+</script>
 
 @include('partials.footer')

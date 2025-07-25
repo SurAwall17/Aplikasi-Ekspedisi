@@ -29,11 +29,8 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 
 Route::middleware(['auth','user'])->group(function () {
-    Route::get('/', function () {
-        return view('index',[
-            'title' => 'home'
-        ]);
-    });
+
+    Route::get('/', [PengirimanController::class, 'index']);
     Route::post('/pembayaran/{id}', [PembayaranController::class, 'pembayaran']);
     Route::get('/notifikasi', [NotifikasiController::class, 'notifikasi']);
     Route::get('/pengiriman', [PengirimanController::class, 'dataPengiriman']);

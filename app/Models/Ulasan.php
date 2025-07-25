@@ -11,7 +11,16 @@ class Ulasan extends Model
     protected $guarded = ['id'];
     protected $table = "ulasan";
 
-    public function pengiriman(){
-        return $this->belongsTo(Pengiriman::class);
+    // public function pengiriman(){
+    //     return $this->belongsTo(Pengiriman::class);
+    // }
+    public function pengiriman()
+    {
+        return $this->belongsTo(Pengiriman::class, 'pengiriman_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
