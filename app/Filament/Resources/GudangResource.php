@@ -34,26 +34,29 @@ class GudangResource extends Resource
             ->schema([
                 TextInput::make('kode_tempat')->label('Kode Tempat')->required(),
                 // TextInput::make('kategori')->label('Kategori')->required(),
-                Select::make('kategori')
-                    ->label('Kategori')
-                    ->options([
-                        'Makanan' => 'Makanan',
-                        'Elektronik' => 'Elektronik',
-                        'Pakaian' => 'Pakaian',
-                        'Perabot' => 'Perabot',
-                        'Dokumen' => 'Dokumen',
-                        'Kesehatan' => 'Kesehatan',
-                        'Peralatan' => 'Peralatan',
-                        'Alat Tulis' => 'Alat Tulis',
-                        'Produk Bayi' => 'Produk Bayi',
-                        'Produk Hewan' => 'Produk Hewan',
-                        'Kosmetik' => 'Kosmetik',
-                        'Lainnya' => 'Lainnya',
-                    ])
-                    ->required(),
+                // Select::make('kategori')
+                //     ->label('Kategori')
+                //     ->options([
+                //         'Makanan' => 'Makanan',
+                //         'Elektronik' => 'Elektronik',
+                //         'Pakaian' => 'Pakaian',
+                //         'Perabot' => 'Perabot',
+                //         'Dokumen' => 'Dokumen',
+                //         'Kesehatan' => 'Kesehatan',
+                //         'Peralatan' => 'Peralatan',
+                //         'Alat Tulis' => 'Alat Tulis',
+                //         'Produk Bayi' => 'Produk Bayi',
+                //         'Produk Hewan' => 'Produk Hewan',
+                //         'Kosmetik' => 'Kosmetik',
+                //         'Lainnya' => 'Lainnya',
+                //     ])
+                //     ->required(),
 
                 TextInput::make('alamat')
                     ->label('Alamat')
+                    ->required(),
+                TextInput::make('kota')
+                    ->label('Kota')
                     ->required(),
 
             ]);
@@ -64,8 +67,8 @@ class GudangResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('kode_tempat')->searchable(),
-                TextColumn::make('kategori')->searchable(),
                 TextColumn::make('alamat')->searchable(),
+                TextColumn::make('kota')->searchable(),
             ])
             ->filters([
                 //

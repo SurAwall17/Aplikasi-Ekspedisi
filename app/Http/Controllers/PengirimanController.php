@@ -76,4 +76,12 @@ class PengirimanController extends Controller
         ]);
         return redirect('/pengiriman');
     }
+
+    public function lacakBarang($gudang_id)
+    {
+        $title = "Pengiriman";
+        $gudang = Gudang::findOrFail($gudang_id);
+
+        return view('/lacak', compact(['gudang', 'title']));
+    }
 }

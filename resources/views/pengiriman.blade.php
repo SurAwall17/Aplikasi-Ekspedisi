@@ -53,6 +53,7 @@
             <th>Harga</th>
             <th>Tanggal Pengiriman</th>
             <th>Status</th>
+            <th>Aksi</th>
         </tr>
     </thead>
     <tbody>
@@ -86,6 +87,11 @@
                         <span class="badge bg-secondary"><i class="bi bi-question-circle me-1"></i> {{ $item->status_pengiriman }}</span>
                     @endif
                 </td>
+                <td>
+                <a href="/lacak-barang/{{ $item->gudang_id }}" class="btn btn-info btn-sm">
+                    <i class="bi bi-geo-alt"></i> Lacak
+                </a>
+            </td>
             </tr>
 
             <!-- Modal Pembayaran -->

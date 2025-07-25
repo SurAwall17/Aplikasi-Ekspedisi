@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('gudang', function (Blueprint $table) {
             $table->id();
             $table->string('kode_tempat');
-            $table->string('kategori');
             $table->string('alamat');
+            $table->string('kota');
             $table->timestamps();
         });
     }

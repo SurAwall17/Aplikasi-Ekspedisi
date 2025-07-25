@@ -45,4 +45,8 @@ Route::middleware(['auth','user'])->group(function () {
 
     Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 
+    Route::get('/lacak-barang/{gudang_id}', [PengirimanController::class, 'lacakBarang']);
+
+
+
 });

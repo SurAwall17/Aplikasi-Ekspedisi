@@ -49,7 +49,7 @@
                   <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               </div>
-            @elseif($item->status_pengiriman == 'Telah Sampai')
+            @elseif($item->status_pengiriman == 'Telah Sampai' && $item->status_ulasan == 0)
               <div class="col-12">
     <div class="alert alert-success alert-dismissible fade show d-flex align-items-center justify-content-between" role="alert">
         <div class="d-flex align-items-center">

@@ -27,6 +27,7 @@ return new class extends Migration
             $table->date('tgl_pengiriman')->nullable();
             $table->string('status_pengiriman');
             $table->decimal('bobot_smart', 6, 3);
+            $table->boolean('status_ulasan')->default(0);
             $table->timestamps();
         });
     }

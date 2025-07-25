@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ulasan;
+use App\Models\Pengiriman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +23,12 @@ class UlasanController extends Controller
             'rating' => $request->rating,
             'komentar' => $request->komentar,
             'tgl_ulasan' => now()->toDateString(),
+        ]);
+
+        $pengiriman = Pengiriman::find($request->pengiriman_id);
+
+        $pengiriman->update([
+            'status_ulasan' => 1
         ]);
 
         return response()->json(['success' => true]);

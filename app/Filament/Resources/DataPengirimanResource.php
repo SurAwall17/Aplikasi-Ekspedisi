@@ -33,7 +33,7 @@ class DataPengirimanResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
-            ->where('status_pengiriman', '!=', 'Menunggu Konfirmasi')
+            ->whereNotIn('status_pengiriman', ['Menunggu Konfirmasi', 'Menunggu Pembayaran'])
             ->orderBy('bobot_smart', 'desc');
     }
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -59,7 +59,7 @@ class DataPengirimanResource extends Resource
                 TextColumn::make('harga')->formatStateUsing(fn ($state) => 'Rp ' . number_format($state, 0, ',', '.')),
                 TextColumn::make('nohp_penerima')->label('Nohp Penerima'),
                 TextColumn::make('truk.nama_truk'),
-                TextColumn::make('gudang.alamat'),
+                TextColumn::make('gudang.kota'),
                 TextColumn::make('bobot_smart'),
                 TextColumn::make('status_pengiriman')->label('Status Pengiriman')
                     ->badge()
