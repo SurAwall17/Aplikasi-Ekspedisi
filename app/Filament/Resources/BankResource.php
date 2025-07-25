@@ -31,12 +31,10 @@ class BankResource extends Resource
         return $form
             ->schema([
                 FileUpload::make('gambar')
-                ->label('Logo Bank')
-                ->directory('bank')
-                ->image()
-                ->maxSize(2048)
-                ->nullable()
-                ->visibility('public'),
+                    ->label('Logo Bank')
+                    ->directory('bank')
+                    ->image()
+                    ->imageEditor(),
 
                 TextInput::make('nama_bank'),
                 TextInput::make('nama_pemilik'),

@@ -172,14 +172,14 @@ class PengirimanResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('resi')->label('Resi'),
-                TextColumn::make('user.name')->label('Pengirim'),
-                TextColumn::make('nama_barang'),
-                TextColumn::make('berat')->formatStateUsing(fn ($state) => $state. ' kg'),
-                TextColumn::make('volume')->formatStateUsing(fn ($state) => $state. ' cm³'),
-                TextColumn::make('penerima'),
-                TextColumn::make('harga')->formatStateUsing(fn ($state) => 'Rp ' . number_format($state, 0, ',', '.')),
-                TextColumn::make('nohp_penerima')->label('Nohp Penerima'),
+                TextColumn::make('resi')->label('Resi')->searchable(),
+                TextColumn::make('user.name')->label('Pengirim')->searchable(),
+                TextColumn::make('nama_barang')->searchable(),
+                TextColumn::make('berat')->searchable()->formatStateUsing(fn ($state) => $state. ' kg'),
+                TextColumn::make('volume')->searchable()->formatStateUsing(fn ($state) => $state. ' cm³'),
+                TextColumn::make('penerima')->searchable(),
+                TextColumn::make('harga')->searchable()->formatStateUsing(fn ($state) => 'Rp ' . number_format($state, 0, ',', '.')),
+                TextColumn::make('nohp_penerima')->searchable()->label('Nohp Penerima'),
                 // TextColumn::make('truk.nama_truk'),
                 // TextColumn::make('gudang.alamat'),
                 TextColumn::make('status_pengiriman')->label('Status Pengiriman')
