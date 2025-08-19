@@ -21,10 +21,9 @@ Aplikasi Ekspedisi ini dirancang untuk mempermudah proses pengiriman barang, mul
 ---
 
 ## 🛠️ Tech Stack
-- **Frontend**: Flutter / React (sesuaikan dengan proyek kamu)
-- **Backend**: Laravel / Flask / Node.js (sesuaikan dengan proyek kamu)
-- **Database**: MySQL / PostgreSQL
-- **UI**: TailwindCSS / Bootstrap
+- **Frontend**: Bootstrap
+- **Backend**: Laravel
+- **Database**: MySQL
 - **Version Control**: Git & GitHub
 
 ---
