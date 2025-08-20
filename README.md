@@ -32,9 +32,9 @@ Aplikasi Ekspedisi ini dirancang untuk mempermudah proses pengiriman barang, mul
 
 1. **Clone Repository**
    ```bash
-   git clone https://github.com/username/nama-repo.git
+   git clone https://github.com/SurAwall17/Aplikasi-Ekspedisi.git
    cd nama-repo
-   composer install   # untuk Laravel
+   composer install 
    cp .env.example .env
    php artisan key:generate
    php artisan migrate --seed
