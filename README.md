@@ -34,8 +34,7 @@ Aplikasi Ekspedisi ini dirancang untuk mempermudah proses pengiriman barang, mul
    ```bash
    git clone https://github.com/username/nama-repo.git
    cd nama-repo
-   
-composer install   # untuk Laravel
-cp .env.example .env
-php artisan key:generate
-php artisan migrate --seed
+   composer install   # untuk Laravel
+   cp .env.example .env
+   php artisan key:generate
+   php artisan migrate --seed
